@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:app/components/button.dart';
 import 'package:app/utils/routes.dart';
 
-class LoginScreen extends StatelessWidget {
-  // sign in method
-  void signUserIn() {
+class SignupScreen extends StatelessWidget {
+  void signUserUp() {
     
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -37,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                   //   height: 40.0,
                   // ),
                   Text(
-                    "Welcome Back",
+                    "Create Your Account",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                     height: 15.0,
                   ),
                   Image.asset(
-                    "assets/images/login.png",
+                    "assets/images/signup.png",
                     fit: BoxFit.cover,
                   ),
                   SizedBox(
@@ -89,8 +88,24 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 20.0,
                         ),
+                        TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.deepPurple)),
+                            fillColor: Colors.grey.shade100,
+                            filled: true,
+                            hintText: "Enter Your Password",
+                            labelText: "Re-enter Password",
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         Button(
-                          onTap: signUserIn,
+                          onTap: signUserUp,
                         ), // Custom Button
                         // ElevatedButton(onPressed: onPressed, child: child)
                       ],
@@ -100,6 +115,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           )),
-        ));
+        )
+    );
   }
 }
