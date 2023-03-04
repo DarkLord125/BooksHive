@@ -7,10 +7,10 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0,
-        // ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
         body: SafeArea(
           child: Container(
               child: Padding(
@@ -18,9 +18,6 @@ class StartScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 50.0,
-                  ),
                   Text(
                     "Welcome to Insta-Mall",
                     style: TextStyle(
