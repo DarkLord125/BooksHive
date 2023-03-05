@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/components/button.dart';
+import 'package:app/widgets/button.dart';
 import 'package:app/utils/routes.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,7 +15,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       Navigator.pushNamed(context, MyRoutes.homeRoute);
     }
-    Navigator.pop(context);
   }
 
   @override

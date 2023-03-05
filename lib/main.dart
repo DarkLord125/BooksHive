@@ -1,3 +1,4 @@
+import 'package:app/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
@@ -16,12 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: GoogleFonts.openSans().fontFamily),
+      // themeMode: ThemeMode.light,
+      theme: MyTheme.darkTheme(context),
+
+          // fontFamily: GoogleFonts.openSans().fontFamily
+  
       routes: {
-        "/": (context) => StartScreen(),
+        "/": (context) => HomeScreen(),
         MyRoutes.homeRoute: (context) => HomeScreen(),
         MyRoutes.loginRoute: (context) => LoginScreen(),
         MyRoutes.signupRoute:(context) => SignupScreen(),
