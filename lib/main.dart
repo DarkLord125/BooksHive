@@ -2,6 +2,7 @@ import 'package:app/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/homedetail_screen.dart';
 import 'screens/signup_screen.dart';
 import 'screens/start_screen.dart';
 import 'utils/routes.dart';
@@ -19,8 +20,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // themeMode: ThemeMode.light,
       theme: MyTheme.darkTheme(context),
-
-          // fontFamily: GoogleFonts.openSans().fontFamily
   
       routes: {
         "/": (context) => HomeScreen(),
@@ -28,6 +27,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.loginRoute: (context) => LoginScreen(),
         MyRoutes.signupRoute:(context) => SignupScreen(),
         MyRoutes.startRoute: (context) => StartScreen(),
+        // MyRoutes.homeDetailRoute: (context) => HomeDetailScreen(catalog: ,),
       },
     );
   }

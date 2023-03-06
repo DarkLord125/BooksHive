@@ -19,7 +19,7 @@ class StartScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "Welcome to Insta-Mall",
+                    "Welcome to BooksHive",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -29,7 +29,7 @@ class StartScreen extends StatelessWidget {
                     height: 20.0,
                   ),
                   Text(
-                    "Discover endless possibilities with our catalog app - your ultimate shopping companion!",
+                    "Escape into a world of knowledge and imagination with our books app. Explore bestsellers, classics, and hidden gems, all at your fingertips.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
