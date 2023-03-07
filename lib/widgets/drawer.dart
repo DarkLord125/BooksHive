@@ -26,39 +26,65 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(
                 CupertinoIcons.home,
-                color: Colors.white,
+                color: kPrimaryColor,
               ),
               title: Text(
                 "Home",
                 textScaleFactor: 1.2,
                 style: TextStyle(
-                  color: Colors.white
+                  color: kPrimaryColor,
                   ),
               ),
             ),
             ListTile(
               leading: Icon(
-                CupertinoIcons.home,
-                color: Colors.white,
+                CupertinoIcons.search,
+                color: kPrimaryColor,
               ),
               title: Text(
-                "Home",
+                "Explore",
                 textScaleFactor: 1.2,
                 style: TextStyle(
-                  color: Colors.white
+                  color: kPrimaryColor,
+                  ),
+              ),
+            ),
+             ListTile(
+              leading: Icon(
+                CupertinoIcons.headphones,
+                color: kPrimaryColor,
+              ),
+              title: Text(
+                "Audiobooks",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: kPrimaryColor,
                   ),
               ),
             ),
             ListTile(
               leading: Icon(
-                CupertinoIcons.home,
-                color: Colors.white,
+                CupertinoIcons.book_fill,
+                color: kPrimaryColor,
               ),
               title: Text(
-                "Home",
+                "Comics",
                 textScaleFactor: 1.2,
                 style: TextStyle(
-                  color: Colors.white
+                  color: kPrimaryColor,
+                  ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: kPrimaryColor,
+              ),
+              title: Text(
+                "Settings",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: kPrimaryColor,
                   ),
               ),
             ), 

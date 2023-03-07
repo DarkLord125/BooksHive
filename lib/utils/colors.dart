@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // const DarkTheme = Color(0xFFF5FCF9);
 const kDarkTheme = Color(0xFF1D1D35);
+const kNav = Color.fromARGB(255, 44, 44, 75);
 const kPrimaryColor = Color.fromARGB(255, 206, 176, 245);
 const kSecondaryColor = Color.fromARGB(255, 146, 74, 240);
 // const kSecondaryColor = Color(0xFFFE9901);
