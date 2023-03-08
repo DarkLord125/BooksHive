@@ -1,5 +1,6 @@
 import 'package:app/widgets/item_widget.dart';
 import 'package:app/widgets/author_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:app/screens/homedetail_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,12 @@ import 'package:app/utils/colors.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
+
+  // sign user out
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     // final newList = List.generate(8, (index) => Catalog.items[7]);
@@ -50,6 +57,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: signUserOut,
+            icon: Icon(Icons.logout),
+          ),
+        ],
         centerTitle: true,
         title: Text("BooksHive"),
       ),

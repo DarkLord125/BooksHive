@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:app/widgets/button.dart';
 import 'package:app/utils/routes.dart';
 
+import '../utils/colors.dart';
+
 class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class StartScreen extends StatelessWidget {
                   Text(
                     "Welcome to BooksHive",
                     style: TextStyle(
+                      color: kSecondaryColor,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
