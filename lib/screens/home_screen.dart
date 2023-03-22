@@ -1,3 +1,4 @@
+import 'package:app/utils/routes.dart';
 import 'package:app/widgets/item_widget.dart';
 import 'package:app/widgets/author_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,12 +9,33 @@ import '/widgets/drawer.dart';
 import 'package:app/models/books.dart';
 import 'package:app/utils/colors.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:quickalert/quickalert.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
   // sign user out
   void signUserOut() {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.confirm,
+      text: 'Do you want to logout',
+      confirmBtnText: 'Yes',
+      onConfirmBtnTap: () => signOut(),
+      cancelBtnText: 'No',
+      onCancelBtnTap: () => Navigator.pop(context),
+      confirmBtnColor: Colors.green,
+    );
+  }
+
+  void signOut() {
     FirebaseAuth.instance.signOut();
+    Navigator.of(context).popUntil(
+      (route) => route.isFirst,
+    );
   }
 
   @override

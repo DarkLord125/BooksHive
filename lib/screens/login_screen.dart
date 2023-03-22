@@ -10,10 +10,13 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+
 final _formKey = GlobalKey<FormState>();
 
 final emailController = TextEditingController();
 final passwordController = TextEditingController();
+
+
 
 class _LoginScreenState extends State<LoginScreen> {
   // sign in method
@@ -61,12 +64,18 @@ class _LoginScreenState extends State<LoginScreen> {
           text: 'User Not Found',
           );
       }
+
+
+
     }
+
+    
 
     // if (_formKey.currentState!.validate()) {
     //   Navigator.pushNamed(context, MyRoutes.homeRoute);
     // }
   }
+
 
 
   @override
@@ -132,6 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               filled: true,
                               hintText: "Enter Your Email Address",
                               labelText: "Email Address",
+                              // suffixIcon: IconButton(
+                              //    onPressed: emailController.clear,
+                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                              //      ),
                             ),
                             // Form Validation
                             // validator: (value) {
@@ -158,6 +171,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               filled: true,
                               hintText: "Enter Your Password",
                               labelText: "Password",
+                              // suffixIcon: IconButton(
+                              //    onPressed: passwordController.clear,
+                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                              //      ),
                             ),
                             // Form Validation
                             // validator: (value) {

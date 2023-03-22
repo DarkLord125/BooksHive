@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^2.7.0
   firebase_auth: ^4.2.10
   quickalert: ^1.0.1
+  username_gen: ^1.0.4
 
 dev_dependencies:
   flutter_test:

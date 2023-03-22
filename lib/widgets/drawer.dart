@@ -2,10 +2,20 @@ import 'package:app/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:username_gen/username_gen.dart';
+
 
 class MyDrawer extends StatelessWidget {
   final String imageUrl = "https://byuc.files.wordpress.com/2012/07/avat-2.jpg";
   final user = FirebaseAuth.instance.currentUser!;
+  // Random User Nick-name Generator
+  final username = UsernameGen.generateWith(
+    data: UsernameGenData(
+        names: ['Nitai','Roshan','Bilal','Bharat'],
+        adjectives: ['Amazing','Wonderful','Stunning','Mind-Blowing'],
+    ),
+    seperator: '_'
+);
 
 
   @override
@@ -20,7 +30,7 @@ class MyDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                   margin: EdgeInsets.zero,
-                  accountName: Text("Ashwin Nair"),
+                  accountName: Text(username),
                   accountEmail: Text(user.email!),
                   currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(imageUrl),

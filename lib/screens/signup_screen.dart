@@ -11,53 +11,64 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-final emailController = TextEditingController();
-final passwordController = TextEditingController();
-final confirmPasswordController = TextEditingController();
-
-        // Sign User Up
-  void signUserUp() async{
-
-
-       if (passwordController.text != confirmPasswordController.text) {
-          QuickAlert.show(  
-         context: context,
-          type: QuickAlertType.error,
-          title: 'Oops...',
-          text: "Passwords Don't Match",
-          );
+  // Sign User Up
+  void signUserUp() async {
+    if (passwordController.text != confirmPasswordController.text) {
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: 'Oops...',
+        text: "Passwords Don't Match",
+      );
     }
-      if (emailController.text == "" || passwordController.text == "" || confirmPasswordController.text == "" ){
-          QuickAlert.show(  
-         context: context,
-          type: QuickAlertType.error,
-          title: 'Oops...',
-          text: 'No Account Created',
-          );
-      }
+    if (emailController.text == "" ||
+        passwordController.text == "" ||
+        confirmPasswordController.text == "") {
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: 'Oops...',
+        text: 'No Account Created',
+      );
+    }
 
-      try {
+    try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-      QuickAlert.show(  
-         context: context,
-          type: QuickAlertType.success,
-          text: 'Account Created Successfully',
-          );
-
-
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.success,
+        text: 'Account Created Successfully',
+        confirmBtnText: 'Okay',
+        onConfirmBtnTap: () =>
+            Navigator.pushReplacementNamed(context, MyRoutes.loginRoute),
+      );
     } on FirebaseAuthException catch (e) {
+      if (e.code != 'user-not-found') {
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Oops...',
+          text: 'Already such account exists',
+        );
+      }
     }
-    
+    passwordController.clear();
+    confirmPasswordController.clear();
+    emailController.clear();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -113,11 +124,16 @@ final confirmPasswordController = TextEditingController();
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.black)),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.deepPurple)),
+                                  borderSide:
+                                      BorderSide(color: Colors.deepPurple)),
                               fillColor: Colors.grey.shade100,
                               filled: true,
                               hintText: "Enter Your Email Address",
                               labelText: "Email Address",
+                              // suffixIcon: IconButton(
+                              //    onPressed: emailController.clear,
+                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                              //      ),
                             ),
                           ),
                           SizedBox(
@@ -131,11 +147,16 @@ final confirmPasswordController = TextEditingController();
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.black)),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.deepPurple)),
+                                  borderSide:
+                                      BorderSide(color: Colors.deepPurple)),
                               fillColor: Colors.grey.shade100,
                               filled: true,
                               hintText: "Enter Your Password",
                               labelText: "Password",
+                              // suffixIcon: IconButton(
+                              //    onPressed: passwordController.clear,
+                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                              //      ),
                             ),
                           ),
                           SizedBox(
@@ -149,11 +170,16 @@ final confirmPasswordController = TextEditingController();
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.black)),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.deepPurple)),
+                                  borderSide:
+                                      BorderSide(color: Colors.deepPurple)),
                               fillColor: Colors.grey.shade100,
                               filled: true,
                               hintText: "Enter Your Password",
                               labelText: "Confirm Password",
+                              // suffixIcon: IconButton(
+                              //    onPressed: confirmPasswordController.clear,
+                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                              //      ),
                             ),
                           ),
                           SizedBox(
@@ -172,7 +198,6 @@ final confirmPasswordController = TextEditingController();
               ),
             ),
           )),
-        )
-    );
+        ));
   }
 }
