@@ -50,14 +50,6 @@ class _SignupScreenState extends State<SignupScreen> {
             Navigator.pushReplacementNamed(context, MyRoutes.loginRoute),
       );
     } on FirebaseAuthException catch (e) {
-      if (e.code != 'user-not-found') {
-        QuickAlert.show(
-          context: context,
-          type: QuickAlertType.error,
-          title: 'Oops...',
-          text: 'Already such account exists',
-        );
-      }
     }
     passwordController.clear();
     confirmPasswordController.clear();
