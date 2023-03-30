@@ -10,23 +10,23 @@ class AuthorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kSecondaryColor,
         borderRadius: BorderRadius.all(
           Radius.circular(15),
         ),
       ),
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.only(right: 16, left: 16),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(right: 16, left: 16),
       width: 260,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Card(
             elevation: 4,
-            margin: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
             clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
@@ -42,7 +42,7 @@ class AuthorWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Column(
@@ -51,7 +51,7 @@ class AuthorWidget extends StatelessWidget {
             children: [
               Text(
                 item.author,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -59,17 +59,17 @@ class AuthorWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.library_books,
                     color: Colors.white,
                     size: 14,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(
-                    item.books.toString() + " books",
-                    style: TextStyle(
+                    "${item.books} books",
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

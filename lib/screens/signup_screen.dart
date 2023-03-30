@@ -49,7 +49,8 @@ class _SignupScreenState extends State<SignupScreen> {
         onConfirmBtnTap: () =>
             Navigator.pushReplacementNamed(context, MyRoutes.loginRoute),
       );
-    } on FirebaseAuthException catch (e) {
+    // ignore: empty_catches
+    } on FirebaseAuthException {
     }
     passwordController.clear();
     confirmPasswordController.clear();
@@ -68,7 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
             onPressed: () {
               Navigator.pop(context, MyRoutes.startRoute);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_outlined,
               size: 24,
               color: Colors.black,
@@ -76,120 +77,119 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ),
         body: SafeArea(
-          child: Container(
-              child: Padding(
+          child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.0),
             child: SingleChildScrollView(
-              child: Form(
-                child: Column(
-                  children: [
-                    // SizedBox(
-                    //   height: 40.0,
-                    // ),
-                    Text(
-                      "Create Your Account",
-                      style: TextStyle(
-                        color: kSecondaryColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Image.asset(
-                      "assets/images/signup.png",
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 32.0),
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            controller: emailController,
-                            style: TextStyle(color: kSecondaryColor),
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.deepPurple)),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "Enter Your Email Address",
-                              labelText: "Email Address",
-                              // suffixIcon: IconButton(
-                              //    onPressed: emailController.clear,
-                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
-                              //      ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          TextFormField(
-                            controller: passwordController,
-                            style: TextStyle(color: kSecondaryColor),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.deepPurple)),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "Enter Your Password",
-                              labelText: "Password",
-                              // suffixIcon: IconButton(
-                              //    onPressed: passwordController.clear,
-                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
-                              //      ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          TextFormField(
-                            controller: confirmPasswordController,
-                            style: TextStyle(color: kSecondaryColor),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.deepPurple)),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "Enter Your Password",
-                              labelText: "Confirm Password",
-                              // suffixIcon: IconButton(
-                              //    onPressed: confirmPasswordController.clear,
-                              //    icon: Icon(Icons.clear,color: kSecondaryColor,),
-                              //      ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          Button(
-                            text: 'Sign Up',
-                            onTap: signUserUp,
-                          ), // Custom Button
-                          // ElevatedButton(onPressed: onPressed, child: child)
-                        ],
-                      ),
-                    )
-                  ],
+          child: Form(
+            child: Column(
+              children: [
+                // SizedBox(
+                //   height: 40.0,
+                // ),
+                const Text(
+                  "Create Your Account",
+                  style: TextStyle(
+                    color: kSecondaryColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Image.asset(
+                  "assets/images/signup.png",
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 32.0),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: emailController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Email Address",
+                          labelText: "Email Address",
+                          // suffixIcon: IconButton(
+                          //    onPressed: emailController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      TextFormField(
+                        controller: passwordController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Password",
+                          labelText: "Password",
+                          // suffixIcon: IconButton(
+                          //    onPressed: passwordController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      TextFormField(
+                        controller: confirmPasswordController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Password",
+                          labelText: "Confirm Password",
+                          // suffixIcon: IconButton(
+                          //    onPressed: confirmPasswordController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Button(
+                        text: 'Sign Up',
+                        onTap: signUserUp,
+                      ), // Custom Button
+                      // ElevatedButton(onPressed: onPressed, child: child)
+                    ],
+                  ),
+                )
+              ],
             ),
-          )),
+          ),
+            ),
+          ),
         ));
   }
 }

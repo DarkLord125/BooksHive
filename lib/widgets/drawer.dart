@@ -36,7 +36,7 @@ class MyDrawer extends StatelessWidget {
                     backgroundImage: NetworkImage(imageUrl),
                   )),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 CupertinoIcons.home,
                 color: kPrimaryColor,
@@ -49,7 +49,7 @@ class MyDrawer extends StatelessWidget {
                   ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 CupertinoIcons.search,
                 color: kPrimaryColor,
@@ -62,7 +62,7 @@ class MyDrawer extends StatelessWidget {
                   ),
               ),
             ),
-             ListTile(
+             const ListTile(
               leading: Icon(
                 CupertinoIcons.headphones,
                 color: kPrimaryColor,
@@ -75,7 +75,7 @@ class MyDrawer extends StatelessWidget {
                   ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 CupertinoIcons.book_fill,
                 color: kPrimaryColor,
@@ -88,7 +88,7 @@ class MyDrawer extends StatelessWidget {
                   ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.settings,
                 color: kPrimaryColor,

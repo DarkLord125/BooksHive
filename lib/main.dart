@@ -1,13 +1,13 @@
 import 'package:app/utils/auth_screen.dart';
 import 'package:app/widgets/theme.dart';
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/homedetail_screen.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'core/store.dart';
+import 'screens/nav_app_bar.dart';
+import 'screens/cart.dart';
 import 'screens/signup_screen.dart';
 import 'screens/start_screen.dart';
 import 'utils/routes.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -16,7 +16,8 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ); 
-  runApp(MyApp());
+  runApp(
+    VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.loginRoute: (context) => AuthPage(),
         MyRoutes.signupRoute: (context) => SignupScreen(),
         MyRoutes.startRoute: (context) => StartScreen(),
+        MyRoutes.cartRoute: (context) => const CartScreen(),
       },
     );
   }

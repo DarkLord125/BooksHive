@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^4.2.10
   quickalert: ^1.0.1
   username_gen: ^1.0.4
+  velocity_x: ^3.6.0
 
 dev_dependencies:
   flutter_test:
