@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../utils/colors.dart';
 import '../models/books.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -11,7 +10,7 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(right: 16.0),
+        margin: const EdgeInsets.only(right: 16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

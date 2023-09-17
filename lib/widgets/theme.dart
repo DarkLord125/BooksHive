@@ -10,7 +10,7 @@ class MyTheme {
       scaffoldBackgroundColor: kDarkTheme,
       textTheme: Theme.of(context).textTheme.apply(bodyColor: kPrimaryColor),
       // iconTheme: IconThemeData(color: klightTheme),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         color: kDarkTheme,
         elevation: 0.0,
         iconTheme: IconThemeData(color: kPrimaryColor),
