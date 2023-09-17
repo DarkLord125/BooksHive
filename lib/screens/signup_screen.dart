@@ -1,16 +1,67 @@
+import 'package:app/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:app/components/button.dart';
+import 'package:app/widgets/button.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/utils/routes.dart';
 
-class SignupScreen extends StatelessWidget {
-  void signUserUp() {
-    
+class SignupScreen extends StatefulWidget {
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
+  // Sign User Up
+  void signUserUp() async {
+    if (passwordController.text != confirmPasswordController.text) {
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: 'Oops...',
+        text: "Passwords Don't Match",
+      );
+    }
+    if (emailController.text == "" ||
+        passwordController.text == "" ||
+        confirmPasswordController.text == "") {
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: 'Oops...',
+        text: 'No Account Created',
+      );
+    }
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.success,
+        text: 'Account Created Successfully',
+        confirmBtnText: 'Okay',
+        onConfirmBtnTap: () =>
+            Navigator.pushReplacementNamed(context, MyRoutes.loginRoute),
+      );
+    // ignore: empty_catches
+    } on FirebaseAuthException {
+    }
+    passwordController.clear();
+    confirmPasswordController.clear();
+    emailController.clear();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -18,7 +69,7 @@ class SignupScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context, MyRoutes.startRoute);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_outlined,
               size: 24,
               color: Colors.black,
@@ -26,96 +77,119 @@ class SignupScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: Container(
-              child: Padding(
+          child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.0),
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // SizedBox(
-                  //   height: 40.0,
-                  // ),
-                  Text(
-                    "Create Your Account",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+          child: Form(
+            child: Column(
+              children: [
+                // SizedBox(
+                //   height: 40.0,
+                // ),
+                const Text(
+                  "Create Your Account",
+                  style: TextStyle(
+                    color: kSecondaryColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(
-                    height: 15.0,
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Image.asset(
+                  "assets/images/signup.png",
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 32.0),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: emailController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Email Address",
+                          labelText: "Email Address",
+                          // suffixIcon: IconButton(
+                          //    onPressed: emailController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      TextFormField(
+                        controller: passwordController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Password",
+                          labelText: "Password",
+                          // suffixIcon: IconButton(
+                          //    onPressed: passwordController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      TextFormField(
+                        controller: confirmPasswordController,
+                        style: const TextStyle(color: kSecondaryColor),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.deepPurple)),
+                          fillColor: Colors.grey.shade100,
+                          filled: true,
+                          hintText: "Enter Your Password",
+                          labelText: "Confirm Password",
+                          // suffixIcon: IconButton(
+                          //    onPressed: confirmPasswordController.clear,
+                          //    icon: Icon(Icons.clear,color: kSecondaryColor,),
+                          //      ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Button(
+                        text: 'Sign Up',
+                        onTap: signUserUp,
+                      ), // Custom Button
+                      // ElevatedButton(onPressed: onPressed, child: child)
+                    ],
                   ),
-                  Image.asset(
-                    "assets/images/signup.png",
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 16.0, horizontal: 32.0),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black)),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.deepPurple)),
-                            fillColor: Colors.grey.shade100,
-                            filled: true,
-                            hintText: "Enter Your Username",
-                            labelText: "Username",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black)),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.deepPurple)),
-                            fillColor: Colors.grey.shade100,
-                            filled: true,
-                            hintText: "Enter Your Password",
-                            labelText: "Password",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black)),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.deepPurple)),
-                            fillColor: Colors.grey.shade100,
-                            filled: true,
-                            hintText: "Enter Your Password",
-                            labelText: "Re-enter Password",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Button(
-                          onTap: signUserUp,
-                        ), // Custom Button
-                        // ElevatedButton(onPressed: onPressed, child: child)
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-          )),
-        )
-    );
+          ),
+            ),
+          ),
+        ));
   }
 }
