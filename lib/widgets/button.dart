@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   final Function()? onTap;
+  final String text;
 
-  const Button({super.key, required this.onTap});
+  const Button({super.key, required this.onTap, required this.text,});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +13,11 @@ class Button extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: Colors.deepPurple, borderRadius: BorderRadius.circular(8)),
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Center(
           child: Text(
-            "Sign In",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            text,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
       ),
